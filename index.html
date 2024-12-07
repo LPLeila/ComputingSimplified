@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0; 
+            padding: 0; 
+            background-color: #E5E3D4;
+        }
+        .header-container {
+            background-color: #1C325B; 
+            border: 2px solid #E5E3D4;
+            padding: 20px 0; 
+            text-align: center; 
+            width: 100%; 
+            height: 200px; /* Set a height for the header */
+            display: flex; /* Use flexbox */
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center; /* Center items vertically */
+            align-items: center; 
+        }
+        h1 {
+            color: #6A669D;
+            font-family: verdana;
+            font-size: 300%;
+            margin: 0;
+        }
+        p {
+            color: #6A669D;
+            font-family: courier;
+            font-size: 150%;
+            margin: 10px 0; 
+        }
+        .tab {
+            border: none;
+            background-color: #1C325B;
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            margin: 30px 10px;
+            transition: background-color 0.3s;
+            font-family: courier;
+            font-size: 16px;
+        }
+        .tab:hover {
+            background-color: #9ABF80;
+        }
+        .content-section {
+            display: none; /* Hide all sections by default */
+            padding: 20px;
+            background-color: #E5E3D4;
+            border: 1px solid #1C325B;
+            margin-top: 30px;
+            background-image: url('portfolio_bg.jpg');
+            background-repeat: no-repeat; /* Prevent the background from repeating */
+            background-size: cover; /* Cover the entire section */
+            background-position: center; /* Center the background image */
+        }
+        .active {
+            display: block; /* Show the active section */
+        }
+        .close-button {
+            background-color: #1C325B;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 30px;
+            font-family: courier;
+            font-size: 16px;
+        }
+        .close-button:hover {
+            background-color: #9ABF80;
+            margin-top: 30px;
+            
+        }
+        .topics-container {
+            padding: 20px; 
+            background-color: #E5E3D4; 
+            text-align: center; 
+        }
+        .custom-paragraph {
+            margin: 30px 0;
+            margin-left: 30px;
+            margin-right: 30px;
+            font-style: italic;
+            font-family: helvetica;
+            color:#1C325B;
+            font-size: 20px;
+            
+        }
+        .aboutme-container{
+            padding: 20px; 
+            background-color: #E5E3D4; 
+            text-align: center; 
+            font-size: 20px;
+        }
+        .box1 {
+            width: 100%;
+            height: 400px;
+            padding: 20px 20px;
+            text-align: center;
+            background-color: #9ABF80;
+            box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .bg-container {
+            width: 100%;
+            height: 100%;
+            background-color: #313131;
+            background-image: radial-gradient(circle, #9ABF80 20%, transparent 20%);
+            background-size: 30px 30px;
+            background-position: -5px -5px
+        }
+        .side-image {
+            width: 200px; 
+            height: auto; 
+        }
+        .content {
+            max-width: 800px; /* Center content */
+            padding: 20px; /* Add some padding */
+            background-color: white; /* Background for content */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+            flex-grow: 1; /* Allow content to grow */
+            margin: 0 20px; /* Add margin to the sides */
+        }
+        img {
+            max-width: 100%;
+            max-height:100%;
+        }
+        .container {
+            display: flex;
+            align-items: center; 
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 5px;
+            margin: 30px 0;
+            margin-left: 30px;
+            margin-top: 30px;
+        }
+        h2 {
+            color: #E5E3D4; 
+            font-family: courier; 
+            font-size: 400%; 
+            margin: 10px 0; 
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #1C325B; 
+            font-family: verdana; 
+            font-size: 200%; 
+            font-style: bold;
+            margin: 10px 0; 
+            margin-bottom: 10px;
+        }
+        h4 {
+            color: #E5E3D4; 
+            font-family: verdana; 
+            font-size: 150%; 
+            font-style: bold, italic;
+            margin: 20px 0; 
+            margin-bottom: 20px; 
+        }
+        ul {
+            color: #E5E3D4; 
+            font-family: verdana; 
+            font-size: 150%; 
+            font-style: bold;
+            margin: 30px 0; 
+            margin-bottom: 125px; 
+            margin-left: 200px;
+        }
+        embed {
+            display: block;
+            margin: 0 auto;
+            width: 1000px;
+            height: 1000px;
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.content-section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            var activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+        }
+        function closeSection() {
+            var sections = document.querySelectorAll('.content-section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Computing Simplified</h1>
+        <p>Compilation of Portfolios!</p>
+    </div>
+    <div class="bg-container">
+        <div class="topics-container">
+            <h1>TOPICS:</h1>
+            <hr width="50%;" color="#1C325B" size="5">
+            <button class="tab" onclick="showSection('portfolio1')">Portfolio 1</button>
+            <button class="tab" onclick="showSection('portfolio2')">Portfolio 2</button>
+            <button class="tab" onclick="showSection('portfolio3')">Portfolio 3</button>
+            <button class="tab" onclick="showSection('portfolio4')">Portfolio 4</button>
+            <button class="tab" onclick="showSection('portfolio5')">Portfolio 5</button>
+            <button class="tab" onclick="showSection('portfolio6')">Portfolio 6</button>
+        </div>
+    </div>
+
+    <div id="portfolio1" class="content-section">
+        <h2>Portfolio 1</h2>
+        <hr width="100%;" color="#1C325B" size="5">
+        <h3>Computer Science as Discipline</h3> 
+        <p class="custom-paragraph">This section discusses the various disciplines within computer science.</p>
+        <p class="custom-paragraph">Computer Science is not just about programming; it is the study of algorithms and data structures, computer and network design, modeling data and information processes, and artificial intelligence.</p>
+        <h4>Computer Science</h4>
+        <p class="custom-paragraph">emerged as a independent discipline in the early 1960s. 
+            Computer Science relates to the field of Mathematics, Logic, Physics and Management Information System.</p>
+        <div class="box1">
+            <div class="container">
+                <img src="computer science.jpg" alt="" width="400" height="300">
+            <ul>
+                <h4>Focuses on</h4>
+                <li>Theoretical application</li>
+                <li>Algorithmic processes</li>
+                <li>Applied disciplined</li>
+                <li>Data analysis</li>
+            </ul>
+            <ul>
+                <h4>Impacts</h4>
+                <li>Healthcare</li>
+                <li>Information</li>
+                <li>Communication</li>
+            </ul>
+            </div>
+        </div>
+        <h3>Core Areas</h3>
+        <p class="custom-paragraph">Software Engineer, AI and Machine learning, Data science, Theoretical computer science, Human-computer science</p>
+        <hr width="100%;" color="#1C325B" size="5">
+        <h3>5 Computing Disciplines and Majors</h3>
+        <h4>COMPUTER ENGINEERING</h4>
+        <div class="box1">
+            <div class="container">
+                <img src="comp eng.jpeg" width="400" height="300">
+                <p class="custom-paragraph">Computer engineering began in 1939 when 
+                    John Vincent Atanasoff and Clifford Berry began developing the 
+                    world's first electronic digital computer. Computer engineering (CE) students study the design of digital 
+                    hardware and software systems including communications systems, 
+                    computers and devices that contain computers. the development of embedded systems. Devices such as cell phones, digital audio players, digital video recorders, alarm systems, x-ray machines, 
+                    and laser surgical tools all require integration of hardware and embedded software, 
+                    and are all the result of computer engineering</p>
+            </div>
+        </div>
+        <h4>INFORMATION SYSTEMS</h4>
+        <div class="box1">
+            <div class="container">
+                <img src="information systems.jpg" width="400" height="300">
+                <p class="custom-paragraph">Information systems were first introduced in the 1960s to deal with 
+                    accounting management issues Information systems (IS) is concerned with the information that computer systems 
+                    can provide to aid a company, non-profit or governmental organization in defining and achieving its goals.
+                    It is also concerned with the processes that an enterprise can implement and improve using information technology</p>
+            </div>
+        </div>
+        <h4>SOFTWARE ENGINEERING</h4>
+        <div class="box1">
+            <div class="container">
+                <img src="soft eng.jpg" width="400" height="300">
+                <p class="custom-paragraph">Started in 1950 - 1960's
+                    The birth of software engineering was created solve  problems that didn’t have existing solutions.
+                    Software engineering focuses on practical. applications, processes, and techniques for building software systems. 
+                    It involves the design, development, testing, and maintenance of software systems, applying engineering 
+                    principles and methodologies, to meet specific requirementsy</p>
+            </div>
+        </div>
+        <h4>INFORMATION TECHNOLOGY</h4>
+        <div class="box1">
+            <div class="container">
+                <img src="Information-Technology-2.jpeg" width="400" height="300">
+                <p class="custom-paragraph">Dated back since 15000 until today as it continued to evolve from writing/drawings to digitalized and modernized technologies.
+                    Information Technology (IT) primarily deals with the implementation, maintenance, and use of computer systems, networks, and software to manage 
+                    and process data. It involves tasks such as installing and configuring hardware and software, managing databases, troubleshooting technical issues, 
+                    and providing technical support to users</p>
+            </div>
+        </div>
+        <button class="close-button" onclick="closeSection()">Close</button>
+    </div>
+    <div id="portfolio2" class="content-section">
+        <h2>Portfolio 2</h2>
+        <embed src="Pasculado-G1-CIS1102N-Portfolio2 (1).pdf#toolbar=0">
+        <button class="close-button" onclick="closeSection()">Close</button>
+    </div>
+    <div id="portfolio3" class="content-section">
+        <h2>Portfolio 3</h2>
+        <embed src="Pasculado-G1-CIS1102N-Portfolio3.pdf#toolbar=0">
+        <button class="close-button" onclick="closeSection()">Close</button>
+    </div>
+    <div id="portfolio4" class="content-section">
+        <h2>Portfolio 4</h2>
+        <embed src="Pasculado_Portfolio4.pdf#toolbar=0">
+        <button class="close-button" onclick="closeSection()">Close</button>
+    </div>
+    <div id="portfolio5" class="content-section">
+        <h2>Portfolio 5</h2>
+        <embed src="Pasculado_Portfolio5.pdf#toolbar=0">
+        <button class="close-button" onclick="closeSection()">Close</button>
+    </div>
+    <div id="portfolio6" class="content-section">
+        <h2>Portfolio 6</h2>
+        <embed src="Pasculado_Portfolio6.pdf#toolbar=0">
+        <button class="close-button" onclick="closeSection()">Close</button>
+    </div>
+    <div class="aboutme-container">
+        <h1>About me!</h1>
+        <img src="462638053_1241235053841802_2529147532590470339_n.jpg" style="border-radius: 25%" width="350" height="450">
+        <p class="custom-paragraph">Heya! I am Lana, the creator of this website.
+            This website contains the information you need especially when you are a tech-related student!
+            You may find detailed and valuable information about types of computers, its uses, components and importance.
+            Technology continues to advance that is why we should keep up! no matter how hard it may seem always find a way 
+            to understand how and why they work. Let me be a helping hand to your journey in the tech field!
+        </p>
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>
